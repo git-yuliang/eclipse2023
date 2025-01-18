@@ -52,11 +52,11 @@ mdata = np.load('./output/mrdata.npy')
 
 outputdir = './output/'
 # Pre-defined radii multipliers
-MULTIPLIERS = np.arange(1.1, 8.6, 0.1)
+MULTIPLIERS = np.arange(1.1, 9.1, 0.1)
 
-# start frame No.= 480
-# end frame No. = 12480
-sno, eno = 480, 12960
+# start frame No.= 240
+# end frame No. = 12720
+sno, eno = 240, 12720
 ts = (eno - sno) / 240
 
 # def find_transition_index(a, b):
@@ -137,7 +137,7 @@ def slicer_wavelet(mdata, frn):
     from scipy.signal import find_peaks
 
     # Corresponding Slicer No.
-    MULTIPLIERS = np.arange(1.1, 8.6, 0.1)
+    MULTIPLIERS = np.arange(1.1, 9.1, 0.1)
     
     # Corresponding Slicer No.
     nn = int(MULTIPLIERS[frn]*10)              # save name of the wavelet result.

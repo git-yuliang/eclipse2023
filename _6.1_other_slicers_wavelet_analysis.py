@@ -52,29 +52,12 @@ mdata = np.load('./output/mrdata.npy')
 
 outputdir = './output/'
 # Pre-defined radii multipliers
-MULTIPLIERS = np.arange(1.1, 8.6, 0.1)
+MULTIPLIERS = np.arange(1.1, 9.1, 0.1)
 
-# start frame No.= 480
-# end frame No. = 12480
-sno, eno = 480, 12960
+# start frame No.= 240
+# end frame No. = 12720
+sno, eno = 240, 12720
 ts = (eno - sno) / 240
-
-# def find_transition_index(a, b):
-#     # Ensure a and b have the same length
-#     if len(a) != len(b):
-#         raise ValueError("a and b must have the same length.")
-    
-#     # Iterate through the arrays to find the first index where a[i] > b[i]
-#     for i in range(len(a)):
-#         if a[i] > b[i]:
-#             # Check if from this index onwards, all subsequent a[i] > b[i] hold true
-#             for j in range(i, len(a)):
-#                 if a[j] <= b[j]:
-#                     return -1  # If any a[j] <= b[j] is found, it doesn't satisfy the condition
-#             return i  # Return the first index that satisfies the condition
-    
-#     # If no index is found that satisfies the condition, return -1
-#     return -1
 
 def find_transition_index(a, b):
     """
@@ -137,7 +120,7 @@ def slicer_wavelet(mdata, frn):
     from scipy.signal import find_peaks
 
     # Corresponding Slicer No.
-    MULTIPLIERS = np.arange(1.1, 8.6, 0.1)
+    MULTIPLIERS = np.arange(1.1, 9.1, 0.1)
     
     # Corresponding Slicer No.
     nn = int(MULTIPLIERS[frn]*10)              # save name of the wavelet result.
@@ -568,6 +551,6 @@ def slicer_wavelet(mdata, frn):
 
 m,n = mdata.shape
 for i in range(1,m):
-    # corresponding the average value of the polar form image: [ridx:r11,:]
+    # corresponding the average value of the polar form image: [ridx:ridx+0.1,:]
     slicer_wavelet(mdata, i)
     print('-----------------> slicer:',i+1,'analysis over. <-----------------')
